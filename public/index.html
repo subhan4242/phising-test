@@ -3,40 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SecAlert | Sikkerhetsøvelse</title>
+  <meta name="theme-color" content="#f8fafc">
+  <title>Hacking Arena Deployment | Demo</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="container nav-content">
-      <div class="logo">SecAlert<span class="logo-dot">.</span></div>
-      <span class="nav-subtitle">Treningsportal</span>
-    </div>
-  </header>
-  <section class="hero">
-    <div class="container">
-      <div class="simulation-label">SIMULERING – KUN FOR OPPLÆRING</div>
-      <h1>Supabase + Vercel: funksjonstest</h1>
-      <p>Dette er en ufarlig demonstrasjon av hvordan et nettskjema sender en hendelse til en database via en serverløs funksjon.</p>
-    </div>
-  </section>
-  <main class="container main-content">
-    <section class="card">
-      <h2>Om sikkerhetsøvelsen</h2>
-      <p class="description">Dette er <strong>ikke</strong> en ekte sikkerhetsrapport eller innloggingsportal. Ikke oppgi ekte passord, CTF-flagg, engangskoder eller annen sensitiv informasjon.</p>
-      <p class="notice">Bruk kun den forhåndsdefinerte testkoden <strong>DEMO-1234</strong>. API-et lagrer kun hendelsestypen <code>demo_submitted</code> og tidspunktet i Supabase – ikke selve koden.</p>
-    </section>
-    <section class="card">
-      <h2>Test databaseforbindelsen</h2>
-      <form id="verificationForm">
-        <label for="demoCode">Testkode</label>
-        <input type="text" id="demoCode" placeholder="DEMO-1234" autocomplete="off" required maxlength="9" pattern="DEMO-1234" title="Bruk DEMO-1234">
-        <button type="submit" id="submitButton">Send testhendelse</button>
-      </form>
-      <p id="message" role="status" aria-live="polite"></p>
-    </section>
+  <main class="panel" aria-labelledby="page-title">
+    <div class="brand">Hacking Arena <span>Demo</span></div>
+    <div class="badge">SIMULERT ØVELSE</div>
+    <h1 id="page-title">Deployment-verifisering</h1>
+    <p class="intro">Skriv inn testflagget for å fullføre dette steget i Hacking Arena Deployment-demoen.</p>
+
+    <form id="verificationForm">
+      <label for="demoCode">Testflagg</label>
+      <input id="demoCode" name="demoCode" type="text" placeholder="DEMO-1234"
+        autocomplete="off" autocapitalize="off" spellcheck="false"
+        required maxlength="9" pattern="DEMO-1234" title="Bruk testflagget DEMO-1234">
+      <button id="submitButton" type="submit">Bekreft testflagg</button>
+    </form>
+    <p id="message" role="status" aria-live="polite"></p>
+
+    <p class="disclaimer">Dette er en teknisk demo, ikke en ekte deployment. Bruk kun <strong>DEMO-1234</strong>. Ikke oppgi ekte CTF-flagg, passord eller andre hemmeligheter.</p>
   </main>
-  <footer>SecAlert – åpent merket demonstrasjon</footer>
+  <footer>Hacking Arena Deployment · Treningsmiljø</footer>
   <script src="/script.js"></script>
 </body>
 </html>
