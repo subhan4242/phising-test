@@ -11,19 +11,19 @@
   <main class="panel" aria-labelledby="page-title">
     <div class="brand">Hacking Arena <span>Demo</span></div>
     <div class="badge">SIMULERT ØVELSE</div>
-    <h1 id="page-title">Deployment-verifisering</h1>
-    <p class="intro">Skriv inn testflagget for å fullføre dette steget i Hacking Arena Deployment-demoen.</p>
+    <h1 id="page-title">Testinnsending</h1>
+    <p class="intro">Skriv inn en valgfri testtekst for å prøve dette steget i Hacking Arena Deployment-demoen.</p>
 
     <form id="verificationForm">
-      <label for="demoCode">Testflagg</label>
-      <input id="demoCode" name="demoCode" type="text" placeholder="DEMO-1234"
+      <label for="demoCode">Testtekst</label>
+      <input id="demoCode" name="demoCode" type="text" placeholder="Skriv en valgfri testtekst"
         autocomplete="off" autocapitalize="off" spellcheck="false"
-        required maxlength="9" pattern="DEMO-1234" title="Bruk testflagget DEMO-1234">
-      <button id="submitButton" type="submit">Bekreft testflagg</button>
+        required maxlength="100">
+      <button id="submitButton" type="submit">Send testhendelse</button>
     </form>
     <p id="message" role="status" aria-live="polite"></p>
 
-    <p class="disclaimer">Dette er en teknisk demo, ikke en ekte deployment. Bruk kun <strong>DEMO-1234</strong>. Ikke oppgi ekte CTF-flagg, passord eller andre hemmeligheter.</p>
+    <p class="disclaimer">Dette er en teknisk demo, ikke en ekte deployment. Alle ikke-tomme testtekster godtas, men <strong>selve teksten sendes ikke til serveren eller lagres</strong> – kun en testhendelse registreres. Ikke skriv inn ekte CTF-flagg, passord eller andre hemmeligheter.</p>
   </main>
   <footer>Hacking Arena Deployment · Treningsmiljø</footer>
   <script src="/script.js"></script>
