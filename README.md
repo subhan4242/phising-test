@@ -1,8 +1,8 @@
-# SecAlert: trygg Supabase + Vercel-demo
+# Hacking Arena Deployment – trygg Supabase + Vercel-demo
 
 Dette er en **tydelig merket opplæringsdemo** basert på den opplastede nettsiden. Den opprinnelige nettsiden ba mottakere om ekte CTF-flagg via en tilsynelatende konfidensiell rapport, og er derfor ikke koblet til en database eller klargjort for publisering som den var.
 
-Denne utgaven viser den samme tekniske integrasjonen uten å samle inn hemmeligheter: `public/index.html` → `public/script.js` → `api/demo-submission.js` (Vercel Node-funksjon) → Supabase-tabellen `demo_events`. Det eneste API-et godtar er `DEMO-1234`, og den **lagrer aldri kodeverdien** (bare en konstant hendelsestype + tidspunkt).
+Denne utgaven er en tydelig merket, enkel Hacking Arena Deployment-simulering: `public/index.html` → `public/script.js` → `api/demo-submission.js` (Vercel Node-funksjon) → Supabase-tabellen `demo_events`. API-et aksepterer bare det ufarlige testflagget `DEMO-1234` og lagrer `event_type`, `demo_code` og tidsstempel. Ikke oppgi ekte CTF-flagg, passord eller andre hemmeligheter.
 
 ## 1. Lag Supabase-prosjekt
 1. Gå til https://supabase.com/dashboard og opprett et prosjekt.
