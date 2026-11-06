@@ -2,7 +2,7 @@
 
 Dette er en **tydelig merket opplæringsdemo** basert på den opplastede nettsiden. Den opprinnelige nettsiden ba mottakere om ekte CTF-flagg via en tilsynelatende konfidensiell rapport, og er derfor ikke koblet til en database eller klargjort for publisering som den var.
 
-Denne utgaven er en tydelig merket, enkel Hacking Arena Deployment-simulering: `public/index.html` → `public/script.js` → `api/demo-submission.js` (Vercel Node-funksjon) → Supabase-tabellen `demo_events`. API-et aksepterer bare det ufarlige testflagget `DEMO-1234` og lagrer `event_type`, `demo_code` og tidsstempel. Ikke oppgi ekte CTF-flagg, passord eller andre hemmeligheter.
+Denne utgaven er en tydelig merket, enkel Hacking Arena Deployment-simulering: `public/index.html` → `public/script.js` → `api/demo-submission.js` (Vercel Node-funksjon) → Supabase-tabellen `demo_events`. Skjemaet godtar enhver ikke-tom testtekst (maks 100 tegn), men **sender aldri den innskrevne teksten til API-et**. Serveren lagrer kun `event_type` og tidsstempel. Den eksisterende `demo_code`-kolonnen brukes ikke lenger og blir `NULL` for nye hendelser. Ikke oppgi ekte CTF-flagg, passord eller andre hemmeligheter.
 
 ## 1. Lag Supabase-prosjekt
 1. Gå til https://supabase.com/dashboard og opprett et prosjekt.
@@ -27,7 +27,7 @@ Kopier `.env.example` til `.env.local` og erstatt eksempelverdiene med dine. Kj�
 vercel dev
 ```
 
-Åpne URL-en Vercel CLI viser. Skriv kun `DEMO-1234`. Sjekk **Table Editor → demo_events** i Supabase; du skal se en ny rad.
+Åpne URL-en Vercel CLI viser. Skriv inn en valgfri, ufarlig testtekst. Sjekk **Table Editor → demo_events** i Supabase; du skal se en ny rad med hendelsestype og tidspunkt, men uten testteksten.
 
 ## 3. Publiser på Vercel
 1. Last opp **innholdet i denne prosjektmappen** til et nytt GitHub-repository. Ikke last opp node_modules eller `.env.local`.
@@ -35,13 +35,13 @@ vercel dev
 3. Sett **Framework Preset: Other**. **Root Directory** skal peke på mappen med `package.json`, `public/` og `api/` (vanligvis `./`). Ingen build-kommando er nødvendig; den statiske siden ligger i `public/`.
 4. Gå til **Project Settings → Environment Variables**, legg til `SUPABASE_URL` og `SUPABASE_SECRET_KEY` (for Production; og Preview/Development dersom du bruker disse).
 5. Deploy (eller **Redeploy** hvis variablene ble lagt inn etter første deployment).
-6. Besøk Vercel-adressen, send `DEMO-1234`, se etter en ny rad i Supabase-tabellen `demo_events`.
+6. Besøk Vercel-adressen, send en ufarlig testtekst, og se etter en ny rad i Supabase-tabellen `demo_events`. Selve testteksten blir ikke lagret.
 
 ## Feilsøking
 - **404 på `/api/demo-submission`**: Kontroller at `api/demo-submission.js` ligger i rotmappen ved siden av `package.json`, ikke under `public/`.
 - **500: Supabase-variablene mangler**: Kontroller nøyaktige navn i Vercel, og kjør Redeploy.
 - **500: Supabase kunne ikke lagre**: Sjekk Vercel Function Logs. Kjør SQL-filen i riktig Supabase-prosjekt, og kontroller at nøkkelen er serverens Secret key (ikke publishable/anon).
 - **404 på `/`**: Sett Vercel Framework Preset til Other og kontroller at `public/index.html` finnes.
-- **400**: Skriv nøyaktig `DEMO-1234` (ingen ekte flagg eller innloggingskoder).
+- **400**: Bare gyldige demonstrasjonsforespørsler godtas; skjemaet krever en ikke-tom testtekst.
 
 Dokumentasjon: https://vercel.com/docs/functions ; https://vercel.com/docs/environment-variables ; https://supabase.com/docs/guides/getting-started/api-keys
