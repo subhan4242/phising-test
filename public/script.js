@@ -4,31 +4,32 @@ const submitButton = document.getElementById("submitButton");
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const demoCode = document.getElementById("demoCode").value.trim();
-  if (demoCode !== "DEMO-1234") {
-    message.textContent = "Bruk kun testflagget DEMO-1234.";
+  const demoText = document.getElementById("demoCode").value.trim();
+  if (!demoText) {
+    message.textContent = "Skriv inn en testtekst først.";
     message.style.color = "#b91c1c";
     return;
   }
 
   submitButton.disabled = true;
-  message.textContent = "Kontrollerer testflagget …";
+  message.textContent = "Registrerer testhendelse …";
   message.style.color = "#475569";
 
   try {
+    // Testteksten sendes aldri til serveren, for å unngå å samle inn hemmeligheter.
     const response = await fetch("/api/demo-submission", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ demoCode })
+      body: JSON.stringify({ testSubmitted: true })
     });
     const result = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(result.error || `HTTP ${response.status}`);
 
-    message.textContent = "Testflagget ble registrert. Dette steget i demoen er fullført.";
+    message.textContent = "Testhendelsen ble lagret i Supabase. Teksten ble ikke lagret.";
     message.style.color = "#15803d";
     form.reset();
   } catch (error) {
-    message.textContent = `Kunne ikke registrere testflagget: ${error.message}`;
+    message.textContent = `Kunne ikke registrere testhendelsen: ${error.message}`;
     message.style.color = "#b91c1c";
   } finally {
     submitButton.disabled = false;
