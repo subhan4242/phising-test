@@ -1,0 +1,224 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6fa;
+    color: #172033;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.navbar {
+    background: #0b1526;
+    color: white;
+    padding: 22px 0;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.logo-dot {
+    color: #3b82f6;
+}
+
+.nav-subtitle {
+    font-size: 13px;
+    color: #cbd5e1;
+}
+
+.hero {
+    background: #172b49;
+    color: white;
+    padding: 65px 0;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin: 18px 0;
+}
+
+.hero p {
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.simulation-label {
+    display: inline-block;
+    padding: 7px 12px;
+    background: #2563eb;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.main-content {
+    padding: 30px 0 60px;
+}
+
+.card {
+    background: white;
+    padding: 32px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 5px 25px rgba(15, 23, 42, 0.06);
+}
+
+.card h2 {
+    font-size: 22px;
+    margin: 0 0 22px;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin-top: 24px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.status-badge {
+    color: #92400e;
+    background: #fef3c7;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.report-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.report-row span {
+    color: #64748b;
+}
+
+.report-row strong {
+    text-align: right;
+}
+
+.severity {
+    color: #dc2626;
+}
+
+.description {
+    color: #475569;
+    line-height: 1.8;
+}
+
+.notice {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 14px;
+    margin: 22px 0;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+input {
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#message {
+    font-size: 14px;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .report-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .report-row strong {
+        text-align: left;
+    }
+
+    .nav-subtitle {
+        display: none;
+    }
+}
+/* Synlig merking av sikkerhetsdemo */
+.simulation-label { background: #fef3c7; color: #78350f; border: 1px solid #fcd34d; font-size: 13px; padding: 9px 12px; }
+.notice { color: #1e40af; }
+code { font-family: ui-monospace, Consolas, monospace; }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecAlert | Sikkerhetsøvelse</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="logo">SecAlert<span class="logo-dot">.</span></div>
+      <span class="nav-subtitle">Treningsportal</span>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="container">
+      <div class="simulation-label">SIMULERING – KUN FOR OPPLÆRING</div>
+      <h1>Supabase + Vercel: funksjonstest</h1>
+      <p>Dette er en ufarlig demonstrasjon av hvordan et nettskjema sender en hendelse til en database via en serverløs funksjon.</p>
+    </div>
+  </section>
+  <main class="container main-content">
+    <section class="card">
+      <h2>Om sikkerhetsøvelsen</h2>
+      <p class="description">Dette er <strong>ikke</strong> en ekte sikkerhetsrapport eller innloggingsportal. Ikke oppgi ekte passord, CTF-flagg, engangskoder eller annen sensitiv informasjon.</p>
+      <p class="notice">Bruk kun den forhåndsdefinerte testkoden <strong>DEMO-1234</strong>. API-et lagrer kun hendelsestypen <code>demo_submitted</code> og tidspunktet i Supabase – ikke selve koden.</p>
+    </section>
+    <section class="card">
+      <h2>Test databaseforbindelsen</h2>
+      <form id="verificationForm">
+        <label for="demoCode">Testkode</label>
+        <input type="text" id="demoCode" placeholder="DEMO-1234" autocomplete="off" required maxlength="9" pattern="DEMO-1234" title="Bruk DEMO-1234">
+        <button type="submit" id="submitButton">Send testhendelse</button>
+      </form>
+      <p id="message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <footer>SecAlert – åpent merket demonstrasjon</footer>
+  <script src="/script.js"></script>
+</body>
+</html>
