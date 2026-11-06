@@ -7,15 +7,14 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Bare POST er tillatt" });
   }
 
-  // Bare den ufarlige testkoden lagres. Ikke bruk ekte passord, flagg eller andre hemmeligheter.
   let body;
   try {
     body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
   } catch {
     return res.status(400).json({ error: "Ugyldig JSON" });
   }
-  if (!body || body.demoCode !== "DEMO-1234") {
-    return res.status(400).json({ error: "Bruk testkoden DEMO-1234" });
+  if (!body || body.testSubmitted !== true || Object.keys(body).length !== 1) {
+    return res.status(400).json({ error: "Ugyldig testforespørsel" });
   }
 
   const { SUPABASE_URL, SUPABASE_SECRET_KEY } = process.env;
@@ -27,9 +26,9 @@ export default async function handler(req, res) {
     const supabase = createClient(SUPABASE_URL, SUPABASE_SECRET_KEY, {
       auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
     });
+    // Kun hendelsestypen/tidspunktet lagres. Eventuell testtekst mottas ikke av API-et.
     const { error } = await supabase.from("demo_events").insert({
-      event_type: "demo_submitted",
-      demo_code: body.demoCode
+      event_type: "demo_submitted"
     });
     if (error) {
       console.error("Supabase-insert feilet:", error.message);
