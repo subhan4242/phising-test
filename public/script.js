@@ -5,8 +5,8 @@ const submitButton = document.getElementById("submitButton");
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const demoText = document.getElementById("demoCode").value.trim();
-  if (!demoText) {
-    message.textContent = "Skriv inn en testtekst først.";
+  if (!/^Hacking-Arena\{[^{}\s]{1,64}\}$/.test(demoText)) {
+    message.textContent = "Bruk formatet Hacking-Arena{kode} (1–64 tegn uten mellomrom eller krøllparenteser).";
     message.style.color = "#b91c1c";
     return;
   }
