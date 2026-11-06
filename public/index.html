@@ -12,19 +12,19 @@
     <div class="brand">Hacking Arena <span>Demo</span></div>
     <div class="badge">SIMULERT ØVELSE</div>
     <h1 id="page-title">Testinnsending</h1>
-    <p class="intro">Skriv inn en testverdi på formatet <code>Hacking-Arena{kode}</code> for å prøve dette steget i Hacking Arena Deployment-demoen.</p>
+    <p class="intro">Skriv inn en forhåndsgodkjent testverdi på formatet <code>Hacking-Arena{kode}</code> for å prøve dette steget i Hacking Arena Deployment-demoen.</p>
 
     <form id="verificationForm">
       <label for="demoCode">Testkode</label>
       <input id="demoCode" name="demoCode" type="text" placeholder="Hacking-Arena{demo123}"
         autocomplete="off" autocapitalize="off" spellcheck="false"
         required maxlength="79" aria-describedby="format-hint">
-      <small id="format-hint">Format: Hacking-Arena{kode}, der kode er 1–64 tegn uten mellomrom eller krøllparenteser.</small>
+      <small id="format-hint">Format: Hacking-Arena{kode} (1–64 tegn uten mellomrom eller krøllparenteser). Kun testverdier som er forhåndsgodkjent av administrator blir lagret.</small>
       <button id="submitButton" type="submit">Send testhendelse</button>
     </form>
     <p id="message" role="status" aria-live="polite"></p>
 
-    <p class="disclaimer">Dette er en teknisk demo, ikke en ekte deployment. Bare testverdier på riktig format godtas, men <strong>selve teksten sendes ikke til serveren eller lagres</strong> – kun en testhendelse registreres. Ikke skriv inn ekte CTF-flagg, passord eller andre hemmeligheter.</p>
+    <p class="disclaimer">Dette er en teknisk demo, ikke en ekte deployment. Ikke oppgi ekte passord, ekte CTF-flagg eller andre hemmeligheter. Kun den forhåndsgodkjente testverdien lagres.</p>
   </main>
   <footer>Hacking Arena Deployment · Treningsmiljø</footer>
   <script src="/script.js"></script>
