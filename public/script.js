@@ -24,11 +24,11 @@ form.addEventListener("submit", async (event) => {
     const result = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(result.error || `HTTP ${response.status}`);
 
-    message.textContent = "Den forhåndsgodkjente testkoden ble lagret i Supabase.";
+    message.textContent = "Godkjent";
     message.style.color = "#15803d";
     form.reset();
   } catch (error) {
-    message.textContent = `Testkoden ble ikke lagret: ${error.message}`;
+    message.textContent = `Ikke Godkjent: ${error.message}`;
     message.style.color = "#b91c1c";
   } finally {
     submitButton.disabled = false;
