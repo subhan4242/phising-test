@@ -14,20 +14,16 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Ugyldig JSON" });
   }
 
-  // Only allow one pre-approved demo value configured privately by the owner.
-  // A visitor cannot use this endpoint to store arbitrary credentials or flags.
+    // Accept any value in the Hacking-Arena{...} format.
   const demoCode = body?.demoCode;
   if (typeof demoCode !== "string" ||
       !/^Hacking-Arena\{[^{}\s]{1,64}\}$/.test(demoCode) ||
       Object.keys(body).length !== 1) {
     return res.status(400).json({ error: "Ugyldig testkodeformat" });
   }
-  const { SUPABASE_URL, SUPABASE_SECRET_KEY, ALLOWED_DEMO_CODE } = process.env;
-  if (!SUPABASE_URL || !SUPABASE_SECRET_KEY || !ALLOWED_DEMO_CODE) {
+  const { SUPABASE_URL, SUPABASE_SECRET_KEY } = process.env;
+  if (!SUPABASE_URL || !SUPABASE_SECRET_KEY) {
     return res.status(500).json({ error: "Miljøvariabler mangler på serveren" });
-  }
-  if (demoCode !== ALLOWED_DEMO_CODE) {
-    return res.status(400).json({ error: "Dette er ikke en forhåndsgodkjent testkode" });
   }
 
   try {
@@ -36,7 +32,7 @@ export default async function handler(req, res) {
     });
     const { error } = await supabase.from("demo_events").insert({
       event_type: "demo_submitted",
-      demo_code: ALLOWED_DEMO_CODE
+      demo_code: demoCode
     });
     if (error) {
       console.error("Supabase-insert feilet:", error.message);
